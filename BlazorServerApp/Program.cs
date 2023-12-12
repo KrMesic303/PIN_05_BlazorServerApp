@@ -1,4 +1,5 @@
 using BlazorServerApp.Data;
+using BlazorServerApp.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ namespace BlazorServerApp
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
                 builder.Configuration.GetConnectionString("DefaultConn")
                 ?? throw new InvalidOperationException()));
+            builder.Services.AddScoped<EmployeesService>();
 
             var app = builder.Build();
 
